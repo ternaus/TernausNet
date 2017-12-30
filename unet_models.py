@@ -39,10 +39,25 @@ class DecoderBlock(nn.Module):
 
 
 class UNet11(nn.Module):
-    def __init__(self, num_classes=1, num_filters=32):
+    def __init__(self, num_filters=32, pretrained=False):
+        """
+        :param num_classes:
+        :param num_filters:
+        :param pretrained:
+            False - no pre-trained network used
+            vgg - encoder pre-trained with VGG11
+            carvana - all weights pre trained on
+                Kaggle: Carvana dataset https://www.kaggle.com/c/carvana-image-masking-challenge
+
+        """
         super().__init__()
         self.pool = nn.MaxPool2d(2, 2)
-        self.encoder = models.vgg11(pretrained=True).features
+
+        if pretrained == 'vgg':
+            self.encoder = models.vgg11(pretrained=True).features
+        else:
+            self.encoder = models.vgg11(pretrained=False).features
+
         self.relu = self.encoder[1]
         self.conv1 = self.encoder[0]
         self.conv2 = self.encoder[3]
@@ -60,7 +75,7 @@ class UNet11(nn.Module):
         self.dec2 = DecoderBlock(num_filters * (4 + 2), num_filters * 2 * 2, num_filters)
         self.dec1 = ConvRelu(num_filters * (2 + 1), num_filters)
 
-        self.final = nn.Conv2d(num_filters, num_classes, kernel_size=1)
+        self.final = nn.Conv2d(num_filters, 1, kernel_size=1)
 
     def forward(self, x):
         conv1 = self.relu(self.conv1(x))
@@ -80,3 +95,19 @@ class UNet11(nn.Module):
         dec2 = self.dec2(torch.cat([dec3, conv2], 1))
         dec1 = self.dec1(torch.cat([dec2, conv1], 1))
         return F.sigmoid(self.final(dec1))
+
+
+def unet11(pretrained=False, **kwargs):
+    """
+    pretrained:
+            False - no pre-trained network used
+            vgg - encoder pre-trained with VGG11
+            carvana - all weights pre trained on
+                Kaggle: Carvana dataset https://www.kaggle.com/c/carvana-image-masking-challenge
+    """
+    model = UNet11(pretrained=pretrained, **kwargs)
+
+    if pretrained == 'carvana':
+        state = torch.load('TernausNet.pt')
+        model.load_state_dict(state['model'])
+    return model
