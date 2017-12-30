@@ -80,22 +80,3 @@ class UNet11(nn.Module):
         dec2 = self.dec2(torch.cat([dec3, conv2], 1))
         dec1 = self.dec1(torch.cat([dec2, conv1], 1))
         return F.sigmoid(self.final(dec1))
-
-#
-# class Loss:
-#     def __init__(self, dice_weight=1):
-#         self.nll_loss = nn.BCELoss()
-#         self.dice_weight = dice_weight
-#
-#     def __call__(self, outputs, targets):
-#         loss = self.nll_loss(outputs, targets)
-#         if self.dice_weight:
-#             eps = 1e-15
-#             dice_target = (targets == 1).float()
-#             dice_output = outputs
-#             intersection = (dice_output * dice_target).sum()
-#             union = dice_output.sum() + dice_target.sum() + eps
-#
-#             loss -= torch.log(2 * intersection / union)
-#
-#         return loss
