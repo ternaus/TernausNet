@@ -20,12 +20,12 @@ This architecture was a part of the [winning solutiuon](https://www.kaggle.com/c
 Please cite TernausNet in your publications if it helps your research:
 
 ```
-@ARTICLE{2018arXiv180105746I,
-   author = {V. Iglovikov and A. Shvets},
-    title = "{TernausNet: U-Net with VGG11 Encoder Pre-Trained on ImageNet for Image Segmentation}",
-  journal = {ArXiv e-prints},
-archivePrefix = "arXiv",
-   eprint = {1801.05746}, 
-     year = 2018,
-    month = jan}
+@ARTICLE{arXiv:1801.05746,
+         author = {V. Iglovikov and A. Shvets},
+          title = "{TernausNet: U-Net with VGG11 Encoder Pre-Trained on ImageNet for Image Segmentation}",
+        journal = {ArXiv e-prints},
+  archivePrefix = "arXiv",
+         eprint = {1801.05746}, 
+           year = 2018,
+          month = jan}
 ```
