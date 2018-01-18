@@ -6,7 +6,7 @@ By [Vladimir Iglovikov](https://www.linkedin.com/in/iglovikov/) and [Alexey Shve
 
 TernausNet is a modification of the celebrated UNet architecture that is widely used for binary Image Segmentation. For more details, please refer to our [arXiv paper](https://arxiv.org/abs/1801.05746).
 
-![UNet11](https://habrastorage.org/webt/go/pg/ne/gopgne-omuckmpywkh8oz-wocsa.png)
+![UNet11](https://habrastorage.org/webt/hu/ji/ir/hujiirvpgpf7eswq88h_x7ahliw.png)
 
 (Network architecure)
 
