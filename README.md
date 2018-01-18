@@ -1,6 +1,6 @@
 # TernausNet: U-Net with VGG11 Encoder Pre-Trained on ImageNet for Image Segmentation
 
-By [Vladimir Iglovikov](https://www.linkedin.com/in/iglovikov/), [Alexey Shvets](https://www.linkedin.com/in/alexey-shvets-b0215263/)
+By [Vladimir Iglovikov](https://www.linkedin.com/in/iglovikov/) and [Alexey Shvets](https://www.linkedin.com/in/alexey-shvets-b0215263/)
 
 # Introduction
 
