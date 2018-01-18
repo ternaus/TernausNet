@@ -22,7 +22,7 @@ Please cite TernausNet in your publications if it helps your research:
 ```
 @ARTICLE{arXiv:1801.05746,
          author = {V. Iglovikov and A. Shvets},
-          title = "{TernausNet: U-Net with VGG11 Encoder Pre-Trained on ImageNet for Image Segmentation}",
+          title = {TernausNet: U-Net with VGG11 Encoder Pre-Trained on ImageNet for Image Segmentation},
         journal = {ArXiv e-prints},
          eprint = {1801.05746}, 
            year = 2018,
