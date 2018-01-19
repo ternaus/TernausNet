@@ -8,12 +8,8 @@ def conv3x3(in_, out):
     return nn.Conv2d(in_, out, 3, padding=1)
 
 
-def concat(xs):
-    return torch.cat(xs, 1)
-
-
 class ConvRelu(nn.Module):
-    def __init__(self, in_: int, out: int):
+    def __init__(self, in_, out):
         super().__init__()
         self.conv = conv3x3(in_, out)
         self.activation = nn.ReLU(inplace=True)
