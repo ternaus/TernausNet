@@ -14,7 +14,7 @@ TernausNet is a modification of the celebrated UNet architecture that is widely 
 
 Pre-trained encoder speeds up convergence even on the datasets with a different semantic features. Above curve shows validation Jaccard Index (IOU) as a function of epochs for [Aerial Imagery](https://project.inria.fr/aerialimagelabeling/)
 
-This architecture was a part of the [winning solutiuon](https://www.kaggle.com/c/carvana-image-masking-challenge) (1st out of 735 teams) in the [Carvana Image Masking Challenge](https://www.kaggle.com/c/carvana-image-masking-challenge).
+This architecture was a part of the [winning solutiuon](http://blog.kaggle.com/2017/12/22/carvana-image-masking-first-place-interview/) (1st out of 735 teams) in the [Carvana Image Masking Challenge](https://www.kaggle.com/c/carvana-image-masking-challenge).
 
 # Citing TernausNet
 Please cite TernausNet in your publications if it helps your research:
