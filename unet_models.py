@@ -138,6 +138,10 @@ class DecoderBlockV2(nn.Module):
 
 
 class TernausNet34(nn.Module):
+    """
+    UNet (https://arxiv.org/abs/1505.04597) with Resnet34(https://arxiv.org/abs/1512.03385) encoder
+
+    """
     def __init__(self, num_classes=1, num_filters=32, pretrained=False, is_deconv=False):
         """
         :param num_classes:
