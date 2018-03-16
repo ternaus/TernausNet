@@ -42,18 +42,13 @@ class UNet11(nn.Module):
         :param num_filters:
         :param pretrained:
             False - no pre-trained network used
-            vgg - encoder pre-trained with VGG11
-            carvana - all weights pre trained on
-                Kaggle: Carvana dataset https://www.kaggle.com/c/carvana-image-masking-challenge
-
+            True - encoder pre-trained with VGG11
         """
         super().__init__()
         self.pool = nn.MaxPool2d(2, 2)
 
-        if pretrained == 'vgg':
-            self.encoder = models.vgg11(pretrained=True).features
-        else:
-            self.encoder = models.vgg11(pretrained=False).features
+        self.encoder = models.vgg11(pretrained=pretrained).features
+
 
         self.relu = self.encoder[1]
         self.conv1 = self.encoder[0]
@@ -91,14 +86,14 @@ class UNet11(nn.Module):
         dec3 = self.dec3(torch.cat([dec4, conv3], 1))
         dec2 = self.dec2(torch.cat([dec3, conv2], 1))
         dec1 = self.dec1(torch.cat([dec2, conv1], 1))
-        return F.sigmoid(self.final(dec1))
+        return self.final(dec1)
 
 
 def unet11(pretrained=False, **kwargs):
     """
     pretrained:
             False - no pre-trained network used
-            vgg - encoder pre-trained with VGG11
+            True - encoder pre-trained with VGG11
             carvana - all weights pre trained on
                 Kaggle: Carvana dataset https://www.kaggle.com/c/carvana-image-masking-challenge
     """
