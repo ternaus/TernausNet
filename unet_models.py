@@ -49,7 +49,6 @@ class UNet11(nn.Module):
 
         self.encoder = models.vgg11(pretrained=pretrained).features
 
-
         self.relu = self.encoder[1]
         self.conv1 = self.encoder[0]
         self.conv2 = self.encoder[3]
@@ -155,10 +154,7 @@ class TernausNet34(nn.Module):
 
         self.pool = nn.MaxPool2d(2, 2)
 
-        if pretrained:
-            self.encoder = torchvision.models.resnet34(pretrained=True)
-        else:
-            self.encoder = torchvision.models.resnet34(pretrained=False)
+        self.encoder = torchvision.models.resnet34(pretrained=pretrained)
 
         self.relu = nn.ReLU(inplace=True)
 
