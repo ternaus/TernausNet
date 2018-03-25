@@ -93,7 +93,7 @@ def unet11(pretrained=False, **kwargs):
     pretrained:
             False - no pre-trained network is used
             True  - encoder is pre-trained with VGG11
-            carvana - all weights are pre-trained using
+            carvana - all weights are pre-trained on
                 Kaggle: Carvana dataset https://www.kaggle.com/c/carvana-image-masking-challenge
     """
     model = UNet11(pretrained=pretrained, **kwargs)
