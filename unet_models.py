@@ -145,8 +145,8 @@ class AlbuNet(nn.Module):
         :param num_classes:
         :param num_filters:
         :param pretrained:
-            False - no pre-trained network used
-            True - encoder pre-trained with resnet34
+            False - no pre-trained network is used
+            True - encoder is pre-trained with resnet34
         :is_deconv:
             False: bilinear interpolation is used in decoder
             True: deconvolution is used in decoder
