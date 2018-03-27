@@ -28,3 +28,7 @@ Please cite TernausNet in your publications if it helps your research:
            year = 2018
         }
 ```
+
+# Example of the train and test pipeline
+
+https://github.com/ternaus/robot-surgery-segmentation
