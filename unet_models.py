@@ -104,6 +104,21 @@ def unet11(pretrained=False, **kwargs):
     return model
 
 
+class Interpolate(nn.Module):
+    def __init__(self, size=None, scale_factor=None, mode='nearest', align_corners=False):
+        super(Interpolate, self).__init__()
+        self.interp = nn.functional.interpolate
+        self.size = size
+        self.mode = mode
+        self.scale_factor = scale_factor
+        self.align_corners = align_corners
+        
+    def forward(self, x):
+        x = self.interp(x, size=self.size, scale_factor=self.scale_factor, 
+                        mode=self.mode, align_corners=self.align_corners)
+        return x
+
+
 class DecoderBlockV2(nn.Module):
     def __init__(self, in_channels, middle_channels, out_channels, is_deconv=True):
         super(DecoderBlockV2, self).__init__()
@@ -123,7 +138,7 @@ class DecoderBlockV2(nn.Module):
             )
         else:
             self.block = nn.Sequential(
-                nn.Upsample(scale_factor=2, mode='bilinear'),
+                Interpolate(scale_factor=2, mode='bilinear'),
                 ConvRelu(in_channels, middle_channels),
                 ConvRelu(middle_channels, out_channels),
             )
